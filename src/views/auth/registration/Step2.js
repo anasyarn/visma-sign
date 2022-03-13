@@ -52,7 +52,7 @@ const Step2 = () => {
   }
   return (
     <Container fluid="true" className="root-container">
-      <Grid container style={{ padding: '2vh' }}>
+      <Grid container style={{ padding: '1vh' }}>
         <Grid xs={12} sm={6} item style={{ padding: '1vh', paddingTop: '5vh' }}>
           <WelcomeText />
         </Grid>
@@ -65,12 +65,10 @@ const Step2 = () => {
               <Button disableElevation style={{ width: '50%', backgroundColor: selectedBillingCycle === "vuosi" ? colors.selectedItem : "transparent", fontSize: '0.7em', color: colors.primary }} onClick={() => { setSelectedBillingCycle("vuosi") }}>VUOSI</Button>
             </div>
           </div>
-
           <div>
             <h4 className='bold'>Valitse paketti</h4>
             {packageData.map(data => <PackageCard key={data.id} isActive={selectedPackage.id === data.id} packageInfo={data} onClick={() => { handlePackageClick(data) }} />)}
           </div>
-
           <p className='font-normal font-color-normal bold'>Hintoihin lisataan ALV</p>
           <p className='font-normal font-color-normal bold'><sup>*</sup>Vuositilaukseen perustuvat paketit veloitetaan kerran vuodessa etukateen kayttooikeusjakson alkaessa. Ennakkoon syntyneita maksuja ei palauteta.</p>
           <p className='font-normal font-color-normal bold'>Ylimenevat tapahtumat laskutetaan kuukausittain ( minimilaskutus 10 € )</p>

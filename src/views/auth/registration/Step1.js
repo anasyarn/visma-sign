@@ -6,7 +6,7 @@ import { colors } from '../../../utils/constants'
 const Step1 = () => {
   return (
     <Container fluid="true" className="root-container">
-      <Grid container style={{ padding: '2vh' }}>
+      <Grid container style={{ padding: '1vh' }}>
         <Grid xs={12} sm={6} item style={{ padding: '1vh', paddingTop: '3vh' }}>
           <WelcomeText />
         </Grid>

@@ -23,7 +23,7 @@ const PackageCard = ({ isActive, packageInfo, onClick }) => {
       <div
         className="package-content"
         style={{
-          width: "15%",
+          width: "12%",
         }}
       >
         {isActive ? (
@@ -40,7 +40,7 @@ const PackageCard = ({ isActive, packageInfo, onClick }) => {
       </div>
       <div
         style={{
-          width: "85%",
+          width: "88%",
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "flex-start",

@@ -26,7 +26,7 @@ const Step3 = () => {
   }
   return (
     <Container fluid="true" className="root-container">
-      <Grid container style={{ padding: '2vh', justifyContent: 'center' }}>
+      <Grid container style={{ padding: '1vh', justifyContent: 'center' }}>
         <Grid xs={12} sm={5} item>
           <h2>Rekisteroitava yritys</h2>
           <div>
