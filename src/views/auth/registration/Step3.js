@@ -107,7 +107,7 @@ const Step3 = () => {
             </div>
           </div>
           {/* ////showing data */}
-          {viewableData && <div className='input-container' style={{ backgroundColor: 'lightcyan', wordWrap: "break-word", padding: '1em', borderRadius: 5 }}>
+          {viewableData && <div className='input-container' style={{ backgroundColor: colors.selectedItem, wordWrap: "break-word", padding: '1em', borderRadius: 5 }}>
             <p className='font-small light'>selectedPackage: {JSON.stringify(viewableData.selectedPackage)}<br /><br />organisationalInfo: {JSON.stringify(viewableData.organisationalInfo)}</p>
           </div>}
           {/* /////end of showing data */}
