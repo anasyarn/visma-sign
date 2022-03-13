@@ -89,7 +89,7 @@ const Step3 = () => {
             <h4 className='bold'>Yhteystiedot</h4>
             <div className='input-container'>
               <TextField label="Sahkopostiosoite" type="email" required variant="outlined" onChange={(e) => { setEmail(e.target.value) }} value={email} fullWidth />
-              <p className='font-small font-color-grey light'>Hintoihin lisataan ALV</p>
+              <p className='font-small font-color-grey light'>Rekisteroinnin vahvistus js allekirjoituspalveluun liittyvat asiat kuten ohjeet ja tiedottet lahetetaan tahan osoitteeseen.</p>
             </div>
             <div className='input-container'>
               <TextField
@@ -103,7 +103,7 @@ const Step3 = () => {
                 }}
                 style={{ width: '100%' }}
               />
-              <p className='font-small font-color-grey light'>Hintoihin lisataan ALV</p>
+              <p className='font-small font-color-grey light'>Puhelinnumero, josta tavoittaa yrityksen edustajan esimerkiksi allekirjoituspalveluun liitetyn jarjestelman tekniseen vikatilanteeseen tai selvittelyyn liittyen.</p>
             </div>
           </div>
           {/* ////showing data */}
