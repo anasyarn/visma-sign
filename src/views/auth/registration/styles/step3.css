@@ -1,0 +1,16 @@
+.form-container {
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+  flex-direction: "column";
+  padding: "2vh";
+}
+.input-container {
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
+}
+@media only screen and (min-width: 600px) {
+  .post-code {
+    width: 90%;
+  }
+}

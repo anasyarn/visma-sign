@@ -1,0 +1,16 @@
+export const colors = {
+    primary: '#007DFF',
+    normalText: '#212121',
+    borderColor: "#E3E3E3",
+    grey: "grey",
+    dark: "black",
+    disabled: "#CFCFCB",
+    success: "#6CBF6D",
+    warning: "#FF7000",
+    info: "#007ACC",
+    fav1: "#581845",
+    fav2: "#F3F2EC",
+    danger: "#C70039",
+    inputContainer: "#F8F9FA",
+    selectedItem: "#EBF5FF",
+};

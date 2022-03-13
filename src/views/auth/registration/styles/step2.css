@@ -1,0 +1,13 @@
+.package-card-container {
+  display: "flex";
+  flex-direction: "row";
+  width: "100%";
+  padding: 0;
+  border-radius: 5;
+}
+.package-content {
+  display: "flex";
+  justify-content: "flex-start";
+  align-items: "flex-start";
+  flex-direction: "column";
+}

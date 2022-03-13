@@ -1,0 +1,34 @@
+.root-container {
+  display: "flex";
+  height: "100vh";
+}
+.bold {
+  font-weight: bold;
+}
+.light {
+  font-weight: lighter;
+}
+.font-normal {
+  font-size: 0.8em;
+}
+.font-small {
+  font-size: 0.7em;
+}
+.font-color-grey {
+  color: #6c7075;
+}
+.font-color-normal {
+  color: #212121;
+}
+.no-margin {
+  margin: 0;
+}
+.no-padding {
+  padding: 0;
+}
+.justify-center {
+  justify-content: center;
+}
+.align-center {
+  align-items: center;
+}
