@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import WelcomeText from '../../../components/WelcomeText'
 import "../../../styles/commonStyles.css"
 import { colors } from '../../../utils/constants'
+import BillingCycleSelect from './components/BillingCycleSelect'
 import PackageCard from './components/PackageCard'
 const packageData = [{
   id: "001",
@@ -58,13 +59,7 @@ const Step2 = () => {
         </Grid>
         <Grid xs={12} sm={6} item style={{ padding: '1vh', paddingTop: '1vh', }}>
           <h2>Palvelu paketit</h2>
-          <div>
-            <h4 className='bold'>Laskutusvali</h4>
-            <div style={{ width: '100%', display: 'flex', flexDirection: 'row', borderRadius: 5, border: `0.5px solid ${colors.primary}`, justifyContent: 'space-between', alignItems: 'center' }}>
-              <Button disableElevation style={{ width: '50%', backgroundColor: selectedBillingCycle === "kuukausi" ? colors.selectedItem : "transparent", fontSize: '0.7em', color: colors.primary, borderRight: `0.5px solid ${colors.primary}`, borderRadius: 0 }} onClick={() => { setSelectedBillingCycle("kuukausi") }}>KUUKAUSI</Button>
-              <Button disableElevation style={{ width: '50%', backgroundColor: selectedBillingCycle === "vuosi" ? colors.selectedItem : "transparent", fontSize: '0.7em', color: colors.primary }} onClick={() => { setSelectedBillingCycle("vuosi") }}>VUOSI</Button>
-            </div>
-          </div>
+          <BillingCycleSelect selectedBillingCycle={selectedBillingCycle} setSelectedBillingCycle={setSelectedBillingCycle} />
           <div>
             <h4 className='bold'>Valitse paketti</h4>
             {packageData.map(data => <PackageCard key={data.id} isActive={selectedPackage.id === data.id} packageInfo={data} onClick={() => { handlePackageClick(data) }} />)}

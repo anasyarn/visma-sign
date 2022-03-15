@@ -1,9 +1,11 @@
-import { Button, Container, Grid, TextField, InputLabel, FormControl, FormLabel, Radio, Select, MenuItem, RadioGroup, FormControlLabel, InputAdornment } from '@mui/material'
+import { Button, Container, Grid } from '@mui/material'
 import React, { useState } from 'react'
 import { colors } from '../../../utils/constants'
+import OrganizationBasicInformation from './components/OrganizationBasicInformation'
+import OrganizationType from './components/OrganizationType'
+import OrganizationContactInformation from './components/OrganizationContactInformation'
 import "../../../styles/commonStyles.css"
 import "./styles/step3.css"
-
 
 const Step3 = () => {
   const [companyName, setCompanyName] = useState("");
@@ -15,97 +17,57 @@ const Step3 = () => {
   const [organizationType, setOrganizationType] = useState("yritys");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("")
-  const [viewableData, setViewableData] = useState("")
+  const [viewableData, setViewableData] = useState("");
+  const [errors, setErrors] = useState({
+    email: false
+  })
+  const validateEmail = (email) => {
+    /////validating email with regular-expression
+    return String(email).toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+  };
   const handleSubmit = async () => {
     // let billingCycle = await localStorage.getItem("billingCycle");
-    let selectedPackage = JSON.parse(await localStorage.getItem("selectedPackage"));
-    let organisationalInfo = { companyName, businessId, country, postAddress, postCode, postalDistrict, organizationType, email, phone };
-    let allData = { selectedPackage, organisationalInfo }
-    console.log(allData);
-    setViewableData(allData)
-  }
+    // console.log(billingCycle)
+    if (validateEmail(email)) {
+      let selectedPackage = JSON.parse(await localStorage.getItem("selectedPackage"));
+      let organisationalInfo = { companyName, businessId, country, postAddress, postCode, postalDistrict, organizationType, email, phone };
+      let allData = { selectedPackage, organisationalInfo }
+      console.log(allData);
+      setViewableData(allData)
+    }
+    else {
+      let error = errors;
+      error.email = true;
+      setErrors({ ...error });
+    }
+    return;
+  };
   return (
     <Container fluid="true" className="root-container">
       <Grid container style={{ padding: '1vh', justifyContent: 'center' }}>
         <Grid xs={12} sm={5} item>
           <h2>Rekisteroitava yritys</h2>
-          <div>
-            {/* <h4 className='bold'>Laskutusvali</h4> */}
-            <div className='input-container'>
-              <TextField label="Yrityksen nimi" required variant="outlined" onChange={(e) => { setCompanyName(e.target.value) }} value={companyName} fullWidth />
-            </div>
-            <div className='input-container'>
-              <TextField label="Y-tunnus" required variant="outlined" onChange={(e) => { setBusinessId(e.target.value) }} value={businessId} fullWidth />
-            </div>
-            <div className='input-container'>
-              <FormControl fullWidth >
-                <InputLabel >Maa jossa yritystoimiige</InputLabel>
-                <Select
-                  value={country}
-                  label="Maa jossa yritystoimiige"
-                  onChange={(e) => {
-                    setCountry(e.target.value)
-                  }}
-                >
-                  <MenuItem value="suomi">Suomi</MenuItem>
-                  <MenuItem value="denmark">Denmark</MenuItem>
-                  <MenuItem value="sweden">Sweden</MenuItem>
-                  <MenuItem value="norway">Norway</MenuItem>
-                  <MenuItem value="iceland">Iceland</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-            <TextField label="Postiosoite" required variant="outlined" onChange={(e) => { setPostAddress(e.target.value) }} value={postAddress} fullWidth />
-            <div>
-              <Grid container>
-                <Grid xs={12} sm={4} item >
-                  <div className='input-container post-code' style={{ marginBottom: '-.2em' }}>
-                    <TextField label="Postinumero" type="number" required variant="outlined" onChange={(e) => { setPostCode(e.target.value) }} value={postCode} fullWidth />
-                  </div>
-                </Grid>
-                <Grid xs={12} sm={8} item >
-                  <div className='input-container'>
-                    <TextField label="Postitoimipaikka" required variant="outlined" onChange={(e) => { setPostalDistrict(e.target.value) }} value={postalDistrict} fullWidth />
-                  </div>
-                </Grid>
-              </Grid>
-            </div>
-            <div className='input-container'>
-              <FormControl fullWidth >
-                <FormLabel required>Organisaatiomuoto</FormLabel>
-                <RadioGroup
-                  value={organizationType}
-                  onChange={(e) => {
-                    setOrganizationType(e.target.value)
-                  }}
-                >
-                  <FormControlLabel value="yritys" control={<Radio />} label="Yritys" />
-                  <FormControlLabel value="yhdistys" control={<Radio />} label="Yhdistys" />
-                </RadioGroup>
-              </FormControl>
-            </div>
-          </div>
-          <div>
-            <h4 className='bold'>Yhteystiedot</h4>
-            <div className='input-container'>
-              <TextField label="Sahkopostiosoite" type="email" required variant="outlined" onChange={(e) => { setEmail(e.target.value) }} value={email} fullWidth />
-              <p className='font-small font-color-grey light'>Rekisteroinnin vahvistus js allekirjoituspalveluun liittyvat asiat kuten ohjeet ja tiedottet lahetetaan tahan osoitteeseen.</p>
-            </div>
-            <div className='input-container'>
-              <TextField
-                sx={{ width: '25ch' }}
-                required
-                label="Puhelin numero"
-                type="number"
-                onChange={(e) => { setPhone(e.target.value) }} value={phone}
-                InputProps={{
-                  startAdornment: <InputAdornment position="start">+358</InputAdornment>,
-                }}
-                style={{ width: '100%' }}
-              />
-              <p className='font-small font-color-grey light'>Puhelinnumero, josta tavoittaa yrityksen edustajan esimerkiksi allekirjoituspalveluun liitetyn jarjestelman tekniseen vikatilanteeseen tai selvittelyyn liittyen.</p>
-            </div>
-          </div>
+          <OrganizationBasicInformation
+            companyName={companyName}
+            setCompanyName={setCompanyName}
+            businessId={businessId}
+            setBusinessId={setBusinessId}
+            country={country}
+            setCountry={setCountry}
+            postAddress={postAddress}
+            setPostAddress={setPostAddress}
+            postCode={postCode}
+            setPostCode={setPostCode}
+            postalDistrict={postalDistrict}
+            setPostalDistrict={setPostalDistrict} />
+          <OrganizationType organizationType={organizationType} setOrganizationType={setOrganizationType} />
+          <OrganizationContactInformation
+            email={email}
+            setEmail={setEmail}
+            phone={phone}
+            setPhone={setPhone}
+            errors={errors}
+            setErrors={setErrors} />
           {/* ////showing data */}
           {viewableData && <div className='input-container' style={{ backgroundColor: colors.selectedItem, wordWrap: "break-word", padding: '1em', borderRadius: 5 }}>
             <p className='font-small light'>selectedPackage: {JSON.stringify(viewableData.selectedPackage)}<br /><br />organisationalInfo: {JSON.stringify(viewableData.organisationalInfo)}</p>
