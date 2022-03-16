@@ -31,9 +31,8 @@ const Step3 = () => {
     if (validateEmail(email)) {
       let selectedPackage = JSON.parse(await localStorage.getItem("selectedPackage"));
       let organisationalInfo = { companyName, businessId, country, postAddress, postCode, postalDistrict, organizationType, email, phone };
-      let allData = { selectedPackage, organisationalInfo }
-      console.log(allData);
-      setViewableData(allData)
+      console.log({ selectedPackage, organisationalInfo });
+      setViewableData({ selectedPackage, organisationalInfo })
     }
     else {
       let error = errors;
